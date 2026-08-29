@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --doc-font: 'Arial', system-ui, sans-serif;
+    --doc-font-size: 10pt;
+    --doc-margin: 12.7mm;
+  }
+}
+
+/* Document Font Classes */
+.font-arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.font-times {
+  font-family: 'Times New Roman', 'Tinos', Times, serif;
+}
+.font-calibri {
+  font-family: Calibri, 'Carlito', Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+}
+
+/* Custom Print and A4 Sheet Rules */
+.a4-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* A4 Sheet on Screen */
+.a4-sheet {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1), 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Portrait Dimensions (210mm x 297mm) */
+.a4-sheet.portrait {
+  width: 210mm;
+  min-height: 297mm;
+  max-height: 297mm;
+  height: 297mm;
+}
+
+/* Landscape Dimensions (297mm x 210mm) */
+.a4-sheet.landscape {
+  width: 297mm;
+  min-height: 210mm;
+  max-height: 210mm;
+  height: 210mm;
+}
+
+/* Editable cells styling */
+[contenteditable="true"] {
+  outline: none;
+  border-radius: 2px;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+[contenteditable="true"]:hover {
+  background-color: rgba(241, 245, 249, 0.6);
+}
+
+[contenteditable="true"]:focus {
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  outline: none;
+}
+
+/* Clean scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* STRICT PRINT STYLES */
+@media print {
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .a4-container {
+    display: block !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .a4-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .a4-sheet.portrait {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+  }
+
+  .a4-sheet.landscape {
+    width: 297mm !important;
+    height: 210mm !important;
+    min-height: 210mm !important;
+    max-height: 210mm !important;
+  }
+
+  [contenteditable="true"]:hover,
+  [contenteditable="true"]:focus {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Force table headers and zebra strips to print backgrounds */
+  th, td {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* Print page orientation rules */
+@page {
+  size: auto;
+  margin: 0;
+}

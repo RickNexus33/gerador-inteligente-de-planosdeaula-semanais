@@ -1,0 +1,6 @@
+{
+  "name": "Gerador Inteligente de Planos de Aula Semanais",
+  "description": "Extração multimodal de rascunhos manuscritos com IA Gemini e diagramação oficial de planos de aula em folhas A4 para PDF e Word (.docx).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
